@@ -1,0 +1,15 @@
+
+ <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+   <%= f.hidden_field :item_id, :value => @item.id %>
+   <%= f.hidden_field :customer_id, :value => current_customer.id %>
+
+   <%= attachment_image_tag @item, :image, :fill, 225, 225 %>
+   <h2><%= @item.name %></h2>
+   <p><%= @item.introduction %></p>
+   <p><%= @item.price %>円</p>
+
+   <p>個数選択</p>
+   <%= f.select :amount, *[1..10] %>
+   <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+
+<% end %>
